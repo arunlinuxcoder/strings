@@ -1,0 +1,38 @@
+char * decodeMessage(char * key, char * message){
+
+char *temp=0,*k=0,*dec=0;
+int loc=0;
+k=(char*)calloc(27,sizeof(char));
+temp=(char*)calloc(27,sizeof(char));
+
+dec=(char*)calloc(strlen(message)+1,sizeof(char));
+
+while(*key){
+    if(*key !=' ' && temp[(*key-'0')-('a'-'0')]=='\0'){
+        temp[(*key-'0')-('a'-'0')]=*key;
+        k[loc]=*key;
+        loc++;
+    }
+    key++;
+}
+loc=0;
+while(*message){
+    if(*message!=' '){
+        for(int i=0;k[i]!='\0';i++){
+            if(*message==k[i]){
+                dec[loc]=temp[i];
+                loc++;   
+                break;
+            }
+        }
+    }
+    else{
+        dec[loc]=' ';
+        loc++;
+    }
+ message++;
+}
+free(k);
+free(temp);
+return dec;
+}
