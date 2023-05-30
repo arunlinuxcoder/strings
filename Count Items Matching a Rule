@@ -1,0 +1,16 @@
+int countMatches(char *** items, int itemsSize, int* itemsColSize, char * ruleKey, char * ruleValue){
+
+    int count=0,loc=0;
+    if(*ruleKey=='t')
+        loc=0;
+    else if(*ruleKey=='c')
+        loc=1;
+    else
+        loc=2;
+
+    for(int i=0;i<itemsSize;i++){
+        if(strcmp(items[i][loc],ruleValue)==0)
+            count++;
+    }
+return count;
+}
