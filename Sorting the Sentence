@@ -1,0 +1,38 @@
+char * sortSentence(char * s){
+
+char **temp=0,*str=0,*sort=0;
+str=s;
+int loc=0,count=0;
+temp=(char**)calloc(10,sizeof(char*));
+
+    for(int i=0;s[i]!='\0';i++){
+        if(s[i]>='1' && s[i]<='9'){
+            temp[(s[i]-'0')-1]=(char*)calloc(201,sizeof(char));
+            count++;
+            while(*str!=' ' && *str!='\0'){
+                if(*str>='a' && *str<='z' || *str>='A' && *str<='Z'){
+                temp[(s[i]-'0')-1][loc]=*str;
+                loc++;
+                }
+                str++;
+            }
+            if(*str==' ')
+                *str++;
+            loc=0;
+        }
+    }
+
+sort=(char*)calloc(strlen(s)+1,sizeof(char));
+loc=0;
+for(int i=0;i<count;i++){
+    for(int j=0;temp[i][j]!='\0';j++){
+        sort[loc]=temp[i][j];
+        loc++;
+    }
+    sort[loc]=' ';
+    loc++;
+}
+sort[--loc]='\0';
+free(temp);
+return sort;
+}
