@@ -1,0 +1,16 @@
+bool checkIfPangram(char * sentence){
+
+char *alpha=0;
+int count=0;
+alpha=(char*)calloc(27,sizeof(char));
+
+while(*sentence){
+    if(alpha[(*sentence-'0')-('a'-'0')]=='\0'){
+        alpha[(*sentence-'0')-('a'-'0')]=*sentence;
+        count++;
+    }
+    sentence++;
+}
+free(alpha);
+return count==26?1:0;
+}
