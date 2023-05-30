@@ -1,0 +1,21 @@
+bool arrayStringsAreEqual(char ** word1, int word1Size, char ** word2, int word2Size){
+
+    char *temp1=0,*temp2=0;
+    temp1=(char*)calloc(pow(10,3)+1,sizeof(char));
+   temp2=(char*)calloc(pow(10,3)+1,sizeof(char));
+   
+        for(int i=0;i<word1Size;i++)
+            strcat(temp1,word1[i]);
+   
+        for(int i=0;i<word2Size;i++)
+            strcat(temp2,word2[i]);
+
+    bool val=0;
+
+    val=strcmp(temp1,temp2);
+
+    free(temp1);
+    free(temp2);
+
+    return val==0?1:0;
+}
